@@ -1,0 +1,14 @@
+.description img{
+  width: 800px;
+  height: 150px;
+}
+.avatar{
+  padding: 10px;
+}
+
+.avatar img {
+  height: 100px;
+  width: 150px;
+}
+
+

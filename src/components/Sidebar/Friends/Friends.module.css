@@ -1,0 +1,12 @@
+.listFriends {
+   display: flex;
+    align-items: flex-end;
+}
+
+.listFriends img{
+    width: 20px;
+    height: 25px;
+}
+.name {
+
+}

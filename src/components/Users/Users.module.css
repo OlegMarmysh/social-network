@@ -1,0 +1,15 @@
+.users {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 300px;
+}
+
+.photo {
+    height: 100px;
+    width: 100px;
+}
+
+.usersPage {
+    font-weight: bold;
+}

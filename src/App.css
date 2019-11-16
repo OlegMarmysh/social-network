@@ -1,0 +1,14 @@
+.appWrapper {
+    margin: 0 auto;
+    display: grid;
+    width: 1000px;
+    grid-template-areas: 'head head' 'nav cont';
+    grid-template-rows: 80px 8fr;
+    grid-template-columns: 1fr 8fr;
+    grid-gap: 5px;
+}
+
+.app_wrapper_profile {
+    grid-area: cont;
+    background-color: gold;
+}
