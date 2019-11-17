@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogsBlock from "./DialogsBlok/DialogsBlock";
 import MessagesBlock from "./MessagesBlock/MessagesBlock";
-import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
 
 const Dialogs = (props) => {
