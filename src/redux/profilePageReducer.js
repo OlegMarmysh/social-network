@@ -54,16 +54,26 @@ export const getUserProfile = (userId) => {
 export const getUserStatus = (userId) => {
     return (dispatch) => {
         profileAPI.getUserStatus(userId)
-            .then(response =>
-            dispatch(setUserStatus(response.data)))
+            .then(response => {
+                    dispatch(setUserStatus(response.data))
+                }
+            )
     }
 };
 export const updateUserStatus = (status) => {
-    return(dispatch) => {
+    return (dispatch) => {
         profileAPI.updateUserStatus(status)
-            .then(response =>
-            dispatch(setUserStatus(response.data.messages)))
+            .then(response => {
+                    if (response.data.resultCode === 0) {
+                        dispatch(setUserStatus(status))
+                    }else {
+                        dispatch(setUserStatus(response.data.messages))
+                    }
+                }
+            )
     }
 };
 
 export default profilePageReducer;
+
+
