@@ -25,7 +25,6 @@ class App extends Component {
             return <Preloader/>
         }
         return (
-            <BrowserRouter>
                 <div className='appWrapper'>
                     <HeaderContainer/>
                     <Navbar/>
@@ -39,7 +38,6 @@ class App extends Component {
                         <Route path='/login' render={() => <Login/>}/>
                     </div>
                 </div>
-            </BrowserRouter>
         )
     }
 }
@@ -48,4 +46,4 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 });
 
-export default compose(connect(mapStateToProps, {initializeApp}))(App);
+export default compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
