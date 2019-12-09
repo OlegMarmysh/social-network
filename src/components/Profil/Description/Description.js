@@ -1,11 +1,10 @@
 import React from 'react';
 import s from './Description.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const Description = (props) => {
-    if (!props.profile){
+const Description = ({profile, status, updateUserStatus}) => {
+    if (!profile){
         return <Preloader/>
     }
     return (
@@ -14,8 +13,8 @@ const Description = (props) => {
                 <img src='http://loveopium.ru/content/2016/07/mongol/00s.jpg'/>
             </div>
             <div className={s.avatar}>
-                <img src={props.profile.photos.large}/>
-                <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                <img src={profile.photos.large}/>
+                <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
             </div>
         </div>
     )

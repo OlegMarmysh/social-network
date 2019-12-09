@@ -6,7 +6,7 @@ import Preloader from "../Common/Preloader/Preloader";
 import {
     getCurrentPage,
     getFollowingInProgress,
-    getIsFetching,
+    getIsFetching, getPortionSize,
     getSizePage,
     getTotalCountUsers, getUsers
 } from "../../redux/usersSelectors";
@@ -25,7 +25,8 @@ class UsersContainer extends React.Component {
             <>
                 <div>{this.props.isFetching ? <Preloader/> : null} </div>
                 <div>
-                    <Users totalCountUsers={this.props.totalCountUsers}
+                    <Users totalCountItems={this.props.totalCountItems}
+                           portionSize={this.props.portionSize}
                            sizePage={this.props.sizePage}
                            currentPage={this.props.currentPage}
                            onSetPages={this.onSetPages}
@@ -43,11 +44,12 @@ class UsersContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         users: getUsers(state),
-        totalCountUsers: getTotalCountUsers(state),
+        totalCountItems: getTotalCountUsers(state),
         sizePage: getSizePage(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        portionSize: getPortionSize(state)
     }
 };
 

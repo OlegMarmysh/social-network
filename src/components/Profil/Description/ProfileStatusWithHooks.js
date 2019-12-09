@@ -8,7 +8,7 @@ const ProfileStatusWithHooks = (props) => {
         setEditMode(true)
     };
     const deactivateEditMode = () => {
-        setEditMode(false)
+        setEditMode(false);
         props.updateUserStatus(status)
     };
     const onChangeInput= (e) => {

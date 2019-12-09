@@ -1,21 +1,22 @@
 import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../components/utilits/objectsHelper";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
-const SET_PAGES = 'SET_PAGES';
-const TOTAL_COUNT_USERS = 'TOTAL_COUNT_USERS';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const FOLLOWING_IN_PROGRESS = 'FOLLOWING_IN_PROGRESS';
+const FOLLOW = 'social-network/userPage/FOLLOW';
+const UNFOLLOW = 'social-network/userPage/UNFOLLOW';
+const SET_USERS = 'social-network/userPage/SET_USERS';
+const SET_PAGES = 'social-network/userPage/SET_PAGES';
+const TOTAL_COUNT_USERS = 'social-network/userPage/TOTAL_COUNT_USERS';
+const TOGGLE_IS_FETCHING = 'social-network/userPage/TOGGLE_IS_FETCHING';
+const FOLLOWING_IN_PROGRESS = 'social-network/userPage/FOLLOWING_IN_PROGRESS';
 
 let initialState = {
     users: [],
-    totalCountUsers: 50,
-    sizePage: 20,
+    totalCountItems: 50,
+    sizePage: 10,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: []
+    followingInProgress: [],
+    portionSize: 10
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -44,7 +45,7 @@ const usersPageReducer = (state = initialState, action) => {
         case TOTAL_COUNT_USERS: {
             return {
                 ...state,
-                totalCountUsers: action.countUsers
+                totalCountItems: action.countUsers
             }
         }
         case TOGGLE_IS_FETCHING: {
