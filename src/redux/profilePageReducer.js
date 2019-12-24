@@ -77,11 +77,16 @@ export const updateUserStatus = (status) => async (dispatch) => {
     }
 };
 export const savePhoto = (file) => async (dispatch) => {
-    debugger
     let response = await profileAPI.savePhoto(file);
     if(response.data.resultCode === 0){
-        debugger
         dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+};
+export const saveProfile = (profile) => async (dispatch) => {
+    let response = await profileAPI.saveProfile(profile);
+    if(response.data.resultCode === 0){
+    debugger
+        /*dispatch(savePhotoSuccess(response.data.data.photos))*/
     }
 };
 
