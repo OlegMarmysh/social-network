@@ -3,7 +3,7 @@ import s from './Description.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../images/users-vector-icon-png_260862.jpg";
-import ProfileDataReduxForm from "./ProfileDataForm";
+import ProfileDataReduxForm from "./ProfileDataReduxForm";
 
 
 const Description = ({profile, status, updateUserStatus, isOwner, savePhoto,saveProfile}) => {
@@ -17,7 +17,11 @@ const Description = ({profile, status, updateUserStatus, isOwner, savePhoto,save
         }
     };
     const handleSubmit = (formData) => {
-        saveProfile(formData)
+        saveProfile(formData).then(
+            () => {
+                setEditMode(false)
+            }
+        );
     };
     return (
         <div className={s.description}>
@@ -28,7 +32,7 @@ const Description = ({profile, status, updateUserStatus, isOwner, savePhoto,save
                 <img src={profile.photos.large || userPhoto}/>
                 {isOwner && <input type={'file'} onChange={onChooseAvatar}/>}
                 {editMode ?
-                    <ProfileDataReduxForm onSubmit={handleSubmit}/>
+                    <ProfileDataReduxForm onSubmit={handleSubmit} profile={profile} initialValues={profile}/>
                     : <ProfileData profile={profile} isOwner={isOwner} goToEditMode = {()=>{setEditMode(true)}}/>
                 }
 
