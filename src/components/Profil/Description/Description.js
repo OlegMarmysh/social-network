@@ -6,7 +6,7 @@ import userPhoto from "../../../images/users-vector-icon-png_260862.jpg";
 import ProfileDataReduxForm from "./ProfileDataReduxForm";
 
 
-const Description = ({profile, status, updateUserStatus, isOwner, savePhoto,saveProfile}) => {
+const Description = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
     const [editMode, setEditMode] = useState(false);
     if (!profile) {
         return <Preloader/>
@@ -25,15 +25,14 @@ const Description = ({profile, status, updateUserStatus, isOwner, savePhoto,save
     };
     return (
         <div className={s.description}>
-            <div>
-                <img src='http://loveopium.ru/content/2016/07/mongol/00s.jpg'/>
-            </div>
             <div className={s.avatar}>
                 <img src={profile.photos.large || userPhoto}/>
                 {isOwner && <input type={'file'} onChange={onChooseAvatar}/>}
                 {editMode ?
                     <ProfileDataReduxForm onSubmit={handleSubmit} profile={profile} initialValues={profile}/>
-                    : <ProfileData profile={profile} isOwner={isOwner} goToEditMode = {()=>{setEditMode(true)}}/>
+                    : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => {
+                        setEditMode(true)
+                    }}/>
                 }
 
                 <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
@@ -69,8 +68,12 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
 
 const Contact = ({contactKey, contactValue}) => {
     return (
-        <div className={s.contact}>
-            <b>{contactKey}: </b> {contactValue}
+        <div>
+            {contactValue &&
+            <div className={s.contact}>
+                <b>{contactKey}: </b> {contactValue}
+            </div>
+            }
         </div>
     )
 };
