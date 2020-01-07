@@ -1,8 +1,9 @@
-import {authAPI, securityAPI} from "../api/api";
+import {authAPI, profileAPI, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'social-network/auth/SET_USER_DATA';
 const SET_CAPTCHA_SUCCESS = 'social-network/auth/SET_CAPTCHA_SUCCESS';
+const SET_AUTH_USER_PROFILE = 'social-network/auth/SET_AUTH_USER_PROFILE';
 
 let initialState = {
     userId: null,
@@ -10,14 +11,15 @@ let initialState = {
     email: null,
     isFetching: false,
     isAuth: false,
-    captchaUrl: null
+    captchaUrl: null,
+    profileUserAuth: null
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
         case SET_CAPTCHA_SUCCESS:
-            {
+        case SET_AUTH_USER_PROFILE: {
             return {
                 ...state,
                 ...action.payload,
@@ -35,6 +37,12 @@ export const setCaptchaSuccess = (captchaUrl) => ({
     type: SET_CAPTCHA_SUCCESS,
     payload: {captchaUrl}
 });
+export const setAuthUserProfile = (profile) => ({type: SET_AUTH_USER_PROFILE, payload: {profile}});
+
+export const getAuthUserProfile = (userId) => async (dispatch) => {
+    let response = await profileAPI.getUserProfile(userId);
+    dispatch(setAuthUserProfile(response.data));
+};
 
 export const getAuthUserData = () => async (dispatch) => {
     let response = await authAPI.getAuthUserData();
@@ -48,7 +56,7 @@ export const login = (email, password, rememberMe, captcha) => async (dispatch) 
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData())
     } else {
-        if (response.data.resultCode === 10){
+        if (response.data.resultCode === 10) {
             dispatch(setCaptcha())
         }
         let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
@@ -56,8 +64,8 @@ export const login = (email, password, rememberMe, captcha) => async (dispatch) 
     }
 };
 export const logout = () => async (dispatch) => {
-        await authAPI.logout();
-        dispatch(setAuthUserData(null, null, null, false))
+    await authAPI.logout();
+    dispatch(setAuthUserData(null, null, null, false))
 };
 
 export const setCaptcha = () => async (dispatch) => {

@@ -1,0 +1,21 @@
+.navBarWrapper {
+  display: flex;
+  margin-left: 400px;
+}
+
+.item a {
+  color: #fffffe;
+  text-decoration: none;
+  padding:  10px 10px ;
+  font-size: 18px;
+  font-weight: bold;
+}
+.item a:hover {
+  border-bottom: 3px solid #bcbcbc;
+}
+.item a.activeLink {
+  color: #383838;
+}
+
+
+
