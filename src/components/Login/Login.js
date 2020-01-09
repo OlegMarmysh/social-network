@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login, setCaptcha} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 import styles from "../Common/FormsControl.module.css"
+import styleLogin from "./Login.module.css"
 
 const Login = ({login, isAuth, captchaUrl, setCaptcha}) => {
     let onSubmit = ({email, password, rememberMe, captcha, ...formData}) => {
@@ -15,8 +16,7 @@ const Login = ({login, isAuth, captchaUrl, setCaptcha}) => {
         return <Redirect to={'/profile'}/>
     }
     return (
-        <div>
-            <h1>LOGIN</h1>
+        <div className={styleLogin.wrapper}>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl} setCaptcha={setCaptcha}/>
         </div>
     )
@@ -24,10 +24,13 @@ const Login = ({login, isAuth, captchaUrl, setCaptcha}) => {
 
 const LoginForm = ({handleSubmit, error, captchaUrl, setCaptcha}) => {
     return (
-        <form onSubmit={handleSubmit}>
-            {createField('email', 'Email', Input, [required])}
+        <form onSubmit={handleSubmit} className={styleLogin.loginForm}>
+            <h2>Sign in</h2>
+            {createField('email', 'Email', Input, [required], {type: 'text'})}
             {createField('password', 'Password', Input, [required], {type: 'password'})}
-            {createField('rememberMe', null, 'input', null, {type: 'checkbox'}, 'remember me')}
+            <div className={styleLogin.checkbox}>
+                {createField('rememberMe', null, 'input', null, {type: 'checkbox'}, 'Remember me')}
+            </div>
             <div className={styles.loginError}>
                 {error}
             </div>
@@ -38,8 +41,8 @@ const LoginForm = ({handleSubmit, error, captchaUrl, setCaptcha}) => {
             <div>
                 {captchaUrl && createField('captcha', 'captcha', Input, [required])}
             </div>
-            <div>
-                <button>Login</button>
+            <div >
+                <button className={styleLogin.loginBtn}>Sign in</button>
             </div>
         </form>
     )

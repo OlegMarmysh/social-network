@@ -1,0 +1,75 @@
+.wrapper {
+    padding: 0;
+    margin: 0;
+    background-color: #e75348;
+    min-height: 100vh;
+    top: 50%;
+    left: 50%;
+    text-decoration: none;
+}
+
+.loginForm {
+    height: 300px;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 5%;
+    padding: 50px 65px 140px 65px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loginForm h2 {
+    text-align: left;
+    margin-bottom: 35px;
+    position: relative;
+    font-weight: 500;
+}
+
+.loginForm h2:before {
+    content: '';
+    position: absolute;
+    border-bottom: 3px solid #e75348;
+    height: 35px;
+    width: 16%;
+}
+.loginForm input[type = 'password'], .loginForm input[type = 'text'] {
+    text-align: left;
+    padding: 15px;
+    margin: 15px auto;
+    background: none;
+    outline: 0;
+    width: 200px;
+    border: 2px solid #ebebeb;
+    border-radius: 15px;
+    color: #b5b5b5;
+    transition: 0.3s;
+}
+.checkbox {
+    margin: 15px 0px 0px -100px;
+}
+.loginBtn {
+    text-decoration: none;
+    outline: none;
+    border: 2px solid #e75348;
+    width: 90px;
+    height: 40px;
+    margin: 15px 0px 0px -135px;
+    border-radius: 20px;
+    background-color: #e75348;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.4s;
+}
+.loginForm input[type = 'password']:focus, .loginForm input[type = 'text']:focus{
+    width: 250px;
+    border: 2px solid #9c9c9c;
+    opacity: 0.7;
+}
+.loginBtn:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #e75348;
+}

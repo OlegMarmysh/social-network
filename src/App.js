@@ -31,6 +31,7 @@ class App extends Component {
                 <div className='appWrapper'>
                     {this.props.initialized && <HeaderContainer/>}
                         <div className='app_wrapper_profile'>
+                            <Route exact path to = '/' render={withSuspense(ProfileContainer)}/>
                             <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
                             <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
                             <Route path='/users' render={() => <UsersContainer/>}/>
