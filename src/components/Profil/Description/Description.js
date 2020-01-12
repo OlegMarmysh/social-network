@@ -25,43 +25,55 @@ const Description = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
     };
     return (
         <div className={s.description}>
-            <div className={s.avatar}>
-                <img src={profile.photos.large || userPhoto}/>
-                {isOwner && <input type={'file'} onChange={onChooseAvatar}/>}
+            <div className={s.avatarContent}>
+                <img className={s.avatar} src={profile.photos.large || userPhoto}/>
+                {
+                    isOwner && <div className={s.chooseAvatar}>
+                        <label className={s.label}><input type={'file'} onChange={onChooseAvatar}/>Update photo</label>
+                    </div>
+                }
+                <div className={s.editMode}>
+                    {isOwner && <div>
+                        <button onClick={() => {
+                            setEditMode(true)
+                        }}>edit
+                        </button>
+                    </div>}
+                </div>
+            </div>
+            <div className={s.profileData}>
                 {editMode ?
                     <ProfileDataReduxForm onSubmit={handleSubmit} profile={profile} initialValues={profile}/>
-                    : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => {
-                        setEditMode(true)
-                    }}/>
+                    : <ProfileData profile={profile} status={status} updateUserStatus={updateUserStatus}/>
                 }
-
-                <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
             </div>
         </div>
     )
 };
 
-const ProfileData = ({profile, isOwner, goToEditMode}) => {
+const ProfileData = ({profile, status, updateUserStatus}) => {
     return <div>
-        {isOwner && <div>
-            <button onClick={goToEditMode}>edit</button>
-        </div>}
-        <div>
-            <b>Full Name: </b>{profile.fullName}
+        <div className={s.fullName}>
+            {profile.fullName}
         </div>
-        <div>
-            <b>About me: </b>{profile.aboutMe}
+        <div className={s.status}>
+            <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
         </div>
-        <div>
-            <b>Looking for a job: </b>{profile.lookingForAJob ? 'yes' : 'no'}
-        </div>
-        {profile.lookingForAJob && <div>
-            <b>Looking for a job description: </b>{profile.lookingForAJobDescription}
-        </div>}
-        <div>
-            <b>Contacts: </b>{Object.keys(profile.contacts).map(key => {
-            return <Contact key={key} contactKey={key} contactValue={profile.contacts[key]}/>
-        })}
+        <div className={s.aboutProfile}>
+            <div>
+                <b>About me: </b><span>{profile.aboutMe}</span>
+            </div>
+            <div>
+                <b>Looking for a job: </b><span>{profile.lookingForAJob ? 'yes' : 'no'}</span>
+            </div>
+            {profile.lookingForAJob && <div>
+                <b>Job description: </b><span>{profile.lookingForAJobDescription}</span>
+            </div>}
+            <div>
+                <b>Contacts: </b>{Object.keys(profile.contacts).map(key => {
+                return <Contact key={key} contactKey={key} contactValue={profile.contacts[key]}/>
+            })}
+            </div>
         </div>
     </div>
 }
