@@ -1,6 +1,54 @@
 .MyPost{
-    padding: 10px;
+
 }
 .Posts{
     margin-top: 15px;
+}
+.inputContent {
+    position: relative;
+}
+.addMessageForm {
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.addMessageForm input {
+    font-size: 20px;
+    text-align: left;
+    padding: 15px;
+    background: none;
+    outline: 0;
+    width: 200px;
+    border: none;
+    color: #b5b5b5;
+}
+
+.addMessageForm button {
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    background-color: #e75348;
+    color: #ffffff;
+    opacity: 0.5;
+    font-weight: 600;
+    border-radius: 15px;
+    width: 20%;
+    padding: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addMessageForm button:hover {
+    opacity: 1;
+}
+
+.inputContent::after {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 2px;
+    background-color: #9f9f9f;
+    opacity: 0.2;
 }

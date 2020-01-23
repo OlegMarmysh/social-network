@@ -69,11 +69,11 @@ const ProfileData = ({profile, status, updateUserStatus}) => {
             {profile.lookingForAJob && <div>
                 <b>Job description: </b><span>{profile.lookingForAJobDescription}</span>
             </div>}
-            <div>
+            {/*<div>
                 <b>Contacts: </b>{Object.keys(profile.contacts).map(key => {
                 return <Contact key={key} contactKey={key} contactValue={profile.contacts[key]}/>
             })}
-            </div>
+            </div>*/}
         </div>
     </div>
 }
@@ -83,7 +83,7 @@ const Contact = ({contactKey, contactValue}) => {
         <div>
             {contactValue &&
             <div className={s.contact}>
-                <b>{contactKey}: </b> {contactValue}
+                <b>{contactKey}: </b> <span>{contactValue}</span>
             </div>
             }
         </div>

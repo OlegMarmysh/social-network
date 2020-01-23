@@ -3,8 +3,8 @@ import s from './Post.module.css';
 
 const Post =(props) =>{
     return(
-        <div>
-            <div className={s.post}>
+        <div className={s.post}>
+            <div >
                 <img src='https://avatarko.ru/img/kartinka/1/multfilm_gomer.png'/>
                 {props.post}
                 <div>

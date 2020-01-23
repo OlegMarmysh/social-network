@@ -1,14 +1,20 @@
 .description {
     display: grid;
     grid-template-areas: 'avatar profileData';
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 450px;
+    grid-gap: 40px;
 }
 
 .avatarContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #ffffff;
     padding: 25px 35px;
-    width: 200px;
     border-radius: 7%;
     grid-area: avatar;
 }
@@ -18,6 +24,7 @@
     background-color: #ffffff;
     margin-top: 60px;
     grid-area: profileData;
+    height: 70%;
 }
 
 .avatar {
@@ -36,8 +43,10 @@
 }
 
 .chooseAvatar {
+    margin-top: 10px;
+    display: inline-block;
     width: 200px;
-    height: 20px;
+    height: 25px;
     border-radius: 15px;
     background-color: #e75348;
     opacity: 0.5;
@@ -54,13 +63,14 @@
 }
 
 .label {
-    padding-left: 50px;
-    color: #ffffff;
-    font-weight: 600;
-    cursor: pointer;
+  padding-left: 50px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
 }
 .chooseAvatar:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .editMode button {

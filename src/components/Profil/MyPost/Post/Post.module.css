@@ -1,5 +1,6 @@
 .post {
-  color: darkmagenta;
+  border-radius: 5%;
+  background-color: #ffffff;
 }
 .post img {
   width: 40px;
