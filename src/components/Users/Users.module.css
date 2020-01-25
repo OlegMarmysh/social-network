@@ -1,12 +1,14 @@
-.users {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-height: 300px;
+.wrapper {
+    max-width: 1100px;
+    padding: 0;
+    margin: 0px auto;
 }
 
-.photo {
-    height: 100px;
-    width: 100px;
+.users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
 

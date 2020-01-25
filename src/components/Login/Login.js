@@ -7,6 +7,7 @@ import {login, setCaptcha} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 import styles from "../Common/FormsControl.module.css"
 import styleLogin from "./Login.module.css"
+import reload from '../../images/reload.png'
 
 const Login = ({login, isAuth, captchaUrl, setCaptcha}) => {
     let onSubmit = ({email, password, rememberMe, captcha, ...formData}) => {
@@ -34,12 +35,14 @@ const LoginForm = ({handleSubmit, error, captchaUrl, setCaptcha}) => {
             <div className={styles.loginError}>
                 {error}
             </div>
-            <div>
-                <img src={captchaUrl}/>
-                {captchaUrl && <button onClick={setCaptcha}>Reload</button>}
-            </div>
-            <div>
-                {captchaUrl && createField('captcha', 'captcha', Input, [required])}
+            <div className={styleLogin.captcha}>
+                <div>
+                    <img src={captchaUrl}/>
+                    {captchaUrl && <img src={reload} onClick={setCaptcha} className={styleLogin.reloadImg}/>}
+                </div>
+                <div>
+                    {captchaUrl && createField('captcha', 'captcha', Input, [required])}
+                </div>
             </div>
             <div >
                 <button className={styleLogin.loginBtn}>Sign in</button>

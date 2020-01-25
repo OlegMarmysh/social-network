@@ -1,0 +1,15 @@
+.user {
+    margin: 40px 30px;
+    width: 200px;
+}
+
+
+
+.photo {
+    height: 100px;
+    width: 100px;
+}
+
+.status {
+    word-wrap: break-word;
+}

@@ -12,7 +12,7 @@ const FOLLOWING_IN_PROGRESS = 'social-network/userPage/FOLLOWING_IN_PROGRESS';
 let initialState = {
     users: [],
     totalCountItems: 50,
-    sizePage: 10,
+    sizePage: 12,
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
