@@ -1,0 +1,53 @@
+.content {
+    padding: 20px;
+}
+
+.content button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #e75348;
+    color: #ffffff;
+    opacity: 0.5;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.content button:hover {
+    opacity: 1;
+}
+.content b {
+    display: inline-block;
+    opacity: 0.5;
+    margin-bottom: 5px;
+}
+
+.content input[type = 'text'] {
+    text-align: left;
+    padding: 15px;
+    margin: 15px auto;
+    background: none;
+    outline: 0;
+    width: 200px;
+    border: 2px solid #ebebeb;
+    border-radius: 15px;
+    color: #404040;
+    transition: 0.3s;
+    font-size: 16px;
+}
+.content input[type = 'text']:focus{
+    border: 2px solid #141414;
+    opacity: 1;
+}
+
+.content input[type= 'checkbox']{
+    padding: 20px;
+}
+
+.lookForJob{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+}
