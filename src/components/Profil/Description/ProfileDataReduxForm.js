@@ -24,13 +24,13 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
             </div>
             <b>Looking for a job
                 description: </b> {createField('lookingForAJobDescription', 'Looking for a job description', Textarea)}
-            <div>
+            {/*<div>
                 <b>Contacts: </b>{Object.keys(profile.contacts).map(key => {
                 return <div key={key} className={s.contact}>
                     <b>{key}: </b> {createField('contacts.' + key, key, Input)}
                 </div>
             })}
-            </div>
+            </div>*/}
         </form>
     </div>
 };

@@ -11,6 +11,7 @@ import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./redux/reduxStore";
 import {withSuspense} from "./hoc/withSuspense";
+import ProfileDataReduxForm from "./components/Profil/Description/ProfileDataReduxForm";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profil/ProfileContainer'));
@@ -21,22 +22,22 @@ class App extends Component {
     }
 
     render() {
-          if (!this.props.initialized) {
-              return <Preloader/>
-          }else if (!this.props.isAuth){
-              return <Login/>
-          }
+        if (!this.props.initialized) {
+            return <Preloader/>
+        } else if (!this.props.isAuth) {
+            return <Login/>
+        }
         return (
             <>
                 <div className='appWrapper'>
                     {this.props.initialized && <HeaderContainer/>}
-                        <div className='app_wrapper_profile'>
-                            <Route exact path to = '/' render={withSuspense(ProfileContainer)}/>
-                            <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
-                            <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
-                            <Route path='/users' render={() => <UsersContainer/>}/>
-                            <Route path='/login' render={() => <Login/>}/>
-                        </div>
+                    <div className='app_wrapper_profile'>
+                        <Route exact path to='/' render={withSuspense(ProfileContainer)}/>
+                        <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+                        <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
+                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                    </div>
                 </div>
             </>
         )

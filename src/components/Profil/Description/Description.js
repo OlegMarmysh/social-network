@@ -4,6 +4,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../images/users-vector-icon-png_260862.jpg";
 import ProfileDataReduxForm from "./ProfileDataReduxForm";
+import {NavLink, Route} from "react-router-dom";
 
 
 const Description = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
@@ -34,10 +35,10 @@ const Description = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
                 }
                 <div className={s.editMode}>
                     {isOwner && <div>
-                        <button onClick={() => {
-                            setEditMode(true)
-                        }}>edit
-                        </button>
+                            <button onClick={() => {
+                                setEditMode(true)
+                            }}>edit
+                            </button>
                     </div>}
                 </div>
             </div>
