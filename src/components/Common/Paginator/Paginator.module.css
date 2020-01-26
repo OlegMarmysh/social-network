@@ -1,3 +1,68 @@
+.wrapper {
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #ffffff;
+}
+
 .usersPage {
-    font-weight: bold;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.activePage {
+    background-color: #e75348;
+    color: #ffffff;
+}
+
+.usersPage button {
+    border: none;
+    font: inherit;
+    width: 40px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.usersPage button:hover {
+    background-color: #e75348;
+    color: #ffffff;
+}
+
+.nextBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-bottom-left-radius: 55%;
+    border-top-right-radius: 55%;
+    width: 40px;
+    height: 33px;
+    margin-left: 5px;
+}
+
+.nextBtn:hover {
+    background-color: #e75348;
+    color: #ffffff;
+}
+
+.prevBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-bottom-right-radius: 55%;
+    border-top-left-radius: 55%;
+    width: 40px;
+    height: 33px;
+    margin-right: 5px;
+}
+
+.prevBtn:hover {
+    background-color: #e75348;
+    color: #ffffff;
 }

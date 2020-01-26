@@ -1,6 +1,8 @@
+
 .user {
     margin: 40px 30px;
     width: 200px;
+    height: 200px;
 }
 
 
@@ -12,4 +14,57 @@
 
 .status {
     word-wrap: break-word;
+    margin: 4px 8px;
+    font-weight: 400;
+    font-size: 14px;
 }
+.unfBtn{
+    text-decoration: none;
+    outline: none;
+    margin: 10px 0px;
+    border: 2px solid #e75348;
+    width: 100px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #e75348;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.unfBtn:hover {
+    background-color: #ffffff;
+    color: #e75348;
+}
+.follBtn {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    margin: 10px 0px;
+    width: 100px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #56d60a;
+    color: #141414;
+    font-size: 16px;
+    font-weight: 400;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.follBtn:hover {
+    background-color: #ebebeb;
+    color: #43a00a;
+}
+.user img {
+    border-radius: 7%;
+}
+
+.fullName {
+    margin: 5px 5px;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+}
+

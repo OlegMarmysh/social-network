@@ -10,5 +10,9 @@
     align-items: center;
     flex-wrap: wrap;
 }
-
+.paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 

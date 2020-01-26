@@ -12,21 +12,21 @@ let Paginator = ({totalCountItems, sizePage, currentPage, onSetPages, portionSiz
     let leftBorderPortion = (portionNumber - 1) * portionSize + 1;
     let rightBorderPortion = portionNumber * portionSize;
     return (
-        <div>
+        <div className={styles.wrapper}>
             {portionNumber > 1 &&
-            <button onClick={() => {
+            <button className={styles.prevBtn} onClick={() => {
                 setPortionNumber(portionNumber - 1)
-            }}>PREV</button>
+            }}>{'<'}</button>
             }
             {pages.filter(p => p >= leftBorderPortion && p <= rightBorderPortion).map(p => {
-                return <span className={currentPage === p && styles.usersPage} onClick={() => {
+                return <div className={styles.usersPage}><button className={currentPage===p && styles.activePage} onClick={() => {
                     onSetPages(p)
-                }}>{p}</span>
+                }}>{p}</button></div>
             })}
             {portionCount > portionNumber &&
-            <button onClick={() => {
+            <button className={styles.nextBtn} onClick={() => {
                 setPortionNumber(portionNumber + 1)
-            }}>NEXT</button>
+            }}>{'>'}</button>
             }
         </div>
     )

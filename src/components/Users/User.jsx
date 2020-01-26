@@ -12,15 +12,15 @@ let User = ({userId, photos, followed, name, status, followingInProgress, unFoll
                 </NavLink>
             </div>
             <div>
-                {followed ? <button disabled={followingInProgress.some(id => id === userId)} onClick={() => {
+                {followed ? <button className={styles.unfBtn} disabled={followingInProgress.some(id => id === userId)} onClick={() => {
                         unFollow(userId)
                     }}>Unfollow</button> :
-                    <button disabled={followingInProgress.some(id => id === userId)} onClick={() => {
+                    <button className={styles.follBtn} disabled={followingInProgress.some(id => id === userId)} onClick={() => {
                         follow(userId)
                     }}>Follow</button>}
             </div>
             <span>
-                        <div>
+                        <div className={styles.fullName}>
                             {name}
                         </div>
                         <div className={styles.status}>

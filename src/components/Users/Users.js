@@ -6,10 +6,12 @@ import User from "./User";
 let Users = ({totalCountItems, portionSize, sizePage, currentPage, onSetPages, users, followingInProgress, unFollow, follow}) => {
     return (
         <div className={styles.wrapper}>
-            <Paginator totalCountItems={totalCountItems} sizePage={sizePage}
-                       currentPage={currentPage} onSetPages={onSetPages}
-                       portionSize={portionSize}
-            />
+            <div className={styles.paginator}>
+                <Paginator totalCountItems={totalCountItems} sizePage={sizePage}
+                           currentPage={currentPage} onSetPages={onSetPages}
+                           portionSize={portionSize}
+                />
+            </div>
             <div className={styles.users}>
                 {
                     users.map(u => <User userId={u.id} status={u.status} name={u.name} followed={u.followed}
