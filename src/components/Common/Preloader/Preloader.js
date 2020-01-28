@@ -1,9 +1,10 @@
 import React from 'react';
 import preloader from "../../../images/Spinner-1s-200px.svg";
+import style from "./Preloader.module.css"
 
 let Preloader = (props) => {
     return (
-        <div>
+        <div className={style.wrapper}>
             <img src={preloader}/>
         </div>
         )
