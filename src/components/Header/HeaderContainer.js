@@ -5,8 +5,16 @@ import {getAuthUserProfile, logout} from "../../redux/authReducer";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
+        debugger
         this.props.getAuthUserProfile(this.props.userId)
     }
+
+   /* componentDidUpdate(prevProps, prevState, snapshot) {
+        debugger
+        if(prevProps.profile.photos.small !== this.props.profile.photos.small){
+            this.props.getAuthUserProfile(this.props.userId)
+        }
+    }*/
 
     render() {
         return (

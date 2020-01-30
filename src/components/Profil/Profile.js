@@ -15,7 +15,7 @@ const Profile = (props) => {
                     />
             </div>
             <div className={s.myPostContent}>
-                <MyPostContainer/>
+                <MyPostContainer />
             </div>
         </div>
     )

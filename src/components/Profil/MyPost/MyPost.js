@@ -4,11 +4,14 @@ import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../Common/FormsControl";
 import {maxLengthCreator, required} from "../../utilits/validators";
+import Preloader from "../../Common/Preloader/Preloader";
 
 const maxLength20 = maxLengthCreator(20);
 
 const MyPost = React.memo((props) => {
-    console.log('render');
+    if (!props.profile) {
+        return <Preloader/>
+    }
     let postsElements = props.posts.map(p => <Post deletePost = {props.deletePost} postId={p.id} post={p.post} likeCounts={p.likeCounts}/>);
 
     let onAddPost = (values) => {

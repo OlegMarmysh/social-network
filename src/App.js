@@ -24,13 +24,11 @@ class App extends Component {
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
-        } else if (!this.props.isAuth) {
-            return <Login/>
         }
         return (
             <>
                 <div className='appWrapper'>
-                    <HeaderContainer/>
+                    {this.props.isAuth && <HeaderContainer/>}
                     <div className='app_wrapper_profile'>
                         <Switch>
                         <Route exact path to='/' render={withSuspense(ProfileContainer)}/>
@@ -55,11 +53,11 @@ let AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp})
 
 let SocialApp = (props) => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 };
 
