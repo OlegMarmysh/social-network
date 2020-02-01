@@ -64,3 +64,15 @@ export const profileAPI = {
         return instance.put(`profile`, profile)
     }
 };
+
+export const dialogsApi = {
+    getDialogs(){
+        return instance.get('dialogs')
+    },
+    getMessages(userId){
+        return instance.get(`dialogs/${userId}/messages`)
+    },
+    sendMessage(userId, message){
+        return instance.post(`dialogs/${userId}/messages`, {body: message})
+    }
+};

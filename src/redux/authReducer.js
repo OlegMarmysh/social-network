@@ -45,7 +45,6 @@ export const getAuthUserProfile = (userId) => async (dispatch) => {
 };
 
 export const getAuthUserData = () => async (dispatch) => {
-    debugger
     let response = await authAPI.getAuthUserData();
     if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data;

@@ -5,7 +5,6 @@ import {getAuthUserProfile, logout} from "../../redux/authReducer";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        debugger
         this.props.getAuthUserProfile(this.props.userId)
     }
 
