@@ -3,14 +3,17 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {getDialogs, getMessages, sendMessage, setCurrentDialog} from "../../redux/dialogsPageReducer";
+import {init, update, sendMessage} from "../../redux/dialogsPageReducer";
 import {withRouter} from "react-router-dom";
 
 class DialogsContainer extends React.Component {
     componentDidMount() {
-        this.props.getDialogs();
-        this.props.getMessages(this.props.match.params.userId);
-        this.props.setCurrentDialog(this.props.match.params.userId)
+        this.props.init(this.props.match.params.userId)
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.match.params.userId !== prevProps.match.params.userId){
+            this.props.update(this.props.match.params.userId)
+        }
     }
 
     render(){
@@ -29,7 +32,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default compose(connect(mapStateToProps, {getDialogs, getMessages, sendMessage, setCurrentDialog}),
+export default compose(connect(mapStateToProps, {init, update, sendMessage}),
     withRouter,
     withAuthRedirect)
 (DialogsContainer);

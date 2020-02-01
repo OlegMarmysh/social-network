@@ -4,6 +4,7 @@ const GET_DIALOGS_SUCCESS = 'social-network/dialogsPage/GET_DIALOGS_SUCCESS';
 const GET_MESSAGES_SUCCESS = 'social-network/dialogsPage/GET_MESSAGES_SUCCESS';
 const SET_CURRENT_DIALOG = 'social-network/dialogsPage/SET_CURRENT_DIALOG';
 const SEND_MESSAGE_SUCCESS = 'social-network/dialogsPage/SEND_MESSAGE_SUCCESS';
+const PUT_UP_DIALOG = 'social-network/dialogsPage/PUT_UP_DIALOG';
 
 let initialState = {
     dialogs: [],
@@ -20,10 +21,16 @@ const dialogsPageReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             };
-        case SEND_MESSAGE_SUCCESS:
+        case PUT_UP_DIALOG:
+            debugger
             return {
                 ...state,
-                messages: action.payload
+                messages: [state.messages.find((d) => d.id === action.userId), ...state.messages.filter(d=> d.id !== action.userId)]
+            }
+       case SEND_MESSAGE_SUCCESS:
+            return {
+                ...state,
+                messages: [...state.messages, action.message]
             };
         default:
             return state;
@@ -33,10 +40,11 @@ const dialogsPageReducer = (state = initialState, action) => {
 
 export const getDialogsSuccess = (dialogs) => ({type: GET_DIALOGS_SUCCESS, payload: {dialogs}});
 export const getMessagesSuccess = (messages) => ({type: GET_MESSAGES_SUCCESS, payload: {messages}});
+export const putUpDialog = (userId) => ({type: PUT_UP_DIALOG, userId});
 export const setCurrentDialog = (selectedDialogId) => ({type: GET_MESSAGES_SUCCESS, payload: {selectedDialogId}});
 
 
-export const sendMessageSuccess = (message) => ({type: SEND_MESSAGE_SUCCESS, payload: {message}});
+export const sendMessageSuccess = (message) => ({type: SEND_MESSAGE_SUCCESS, message});
 
 export const getDialogs = () => async (dispatch) => {
     let response = await dialogsApi.getDialogs();
@@ -45,11 +53,38 @@ export const getDialogs = () => async (dispatch) => {
 export const getMessages = (userId) => async (dispatch) => {
     let response = await dialogsApi.getMessages(userId);
     dispatch(getMessagesSuccess(response.data.items))
-}
-
+};
+export const startDialog = (userId) => async (dispatch, getState) => {
+    await dialogsApi.startDialog(userId);
+    if (getState().dialogsPage.dialogs.find(d => d.id === userId)) {
+        dispatch(putUpDialog(userId))
+    } else {
+        dispatch(getDialogs())
+    }
+};
 export const sendMessage = (userId, message) => async (dispatch) => {
+    debugger
     let response = await dialogsApi.sendMessage(userId, message);
-    dispatch(sendMessageSuccess(message))
-}
+    dispatch(sendMessageSuccess(response.data.data.message))
+};
+
+export const init = (userId) => async (dispatch) => {
+    debugger
+    if(!!userId){
+        dispatch(getMessages(userId));
+        dispatch(setCurrentDialog(userId));
+        await dispatch(startDialog(userId));
+        dispatch(getDialogs());
+    }else {
+        dispatch(getDialogs());
+    }
+
+
+};
+
+export const update = (userId) => async (dispatch) => {
+        dispatch(getMessages(userId));
+        dispatch(setCurrentDialog(userId))
+};
 
 export default dialogsPageReducer;

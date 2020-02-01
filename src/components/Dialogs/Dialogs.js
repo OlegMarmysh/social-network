@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import s from './Dialogs.module.css';
-import {sendMessage} from "../../redux/dialogsPageReducer";
 import Dialog from "./Dialog";
 
 const Dialogs = (props) => {
     const [message, setMessage] = useState('');
+    const sendMessage = () => {
+        props.sendMessage(props.selectedDialogId, message);
+        setMessage('');
+    }
     return (
         <div className={s.dialogs}>
             <div>
@@ -24,10 +27,7 @@ const Dialogs = (props) => {
                             }} rows="5"/>
                         </div>
                         <div>
-                            <button onClick={() => {
-                                props.sendMessage(1079, message)
-                            }}>Send
-                            </button>
+                            <button onClick={() => {sendMessage()}}>Send</button>
                         </div>
                     </div>
                 }

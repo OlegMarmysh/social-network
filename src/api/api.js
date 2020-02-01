@@ -72,6 +72,9 @@ export const dialogsApi = {
     getMessages(userId){
         return instance.get(`dialogs/${userId}/messages`)
     },
+    startDialog(userId){
+        return instance.put(`dialogs/${userId}`)
+    },
     sendMessage(userId, message){
         return instance.post(`dialogs/${userId}/messages`, {body: message})
     }
