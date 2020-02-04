@@ -3,11 +3,12 @@ import s from './Dialogs.module.css';
 import Dialog from "./Dialog";
 
 const Dialogs = (props) => {
+    debugger
     const [message, setMessage] = useState('');
     const sendMessage = () => {
         props.sendMessage(props.selectedDialogId, message);
         setMessage('');
-    }
+    };
     return (
         <div className={s.dialogs}>
             <div>
@@ -20,7 +21,7 @@ const Dialogs = (props) => {
                 {
                     props.selectedDialogId &&
                     <div>
-                        {props.messages.map(m=> <div key = {m.id}>{m.senderName}: {m.body}</div>)}
+                        {(props.messages.length>0) ? props.messages.map(m=> <div key = {m.id}>{m.senderName}: {m.body}</div>): <span>No messages</span>}
                         <div>
                             <textarea value={message} onChange={(e) => {
                                 setMessage(e.currentTarget.value)
@@ -35,6 +36,5 @@ const Dialogs = (props) => {
         </div>
     )
 };
-
 
 export default Dialogs;

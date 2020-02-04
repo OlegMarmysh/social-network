@@ -63,18 +63,18 @@ export const startDialog = (userId) => async (dispatch, getState) => {
     }
 };
 export const sendMessage = (userId, message) => async (dispatch) => {
-    debugger
     let response = await dialogsApi.sendMessage(userId, message);
-    dispatch(sendMessageSuccess(response.data.data.message))
+    dispatch(sendMessageSuccess(response.data.data.message));
+    dispatch(putUpDialog(userId));
 };
 
 export const init = (userId) => async (dispatch) => {
     debugger
     if(!!userId){
-        dispatch(getMessages(userId));
-        dispatch(setCurrentDialog(userId));
         await dispatch(startDialog(userId));
         dispatch(getDialogs());
+        dispatch(getMessages(userId));
+        dispatch(setCurrentDialog(userId));
     }else {
         dispatch(getDialogs());
     }
