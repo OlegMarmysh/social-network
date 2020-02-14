@@ -1,0 +1,27 @@
+.dialog {
+
+}
+
+.dialog a{
+    display: flex;
+    margin-right: auto;
+    margin-top: 9px;
+    padding: 9px 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dialog a:hover{
+    background-color: #eeeeee;
+}
+.dialog a>div{
+    color: #5c5c5c;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.activeLink {
+    opacity: 0.6;
+   background-color: #84acbc;
+}
+

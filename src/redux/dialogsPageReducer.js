@@ -22,10 +22,9 @@ const dialogsPageReducer = (state = initialState, action) => {
                 ...action.payload
             };
         case PUT_UP_DIALOG:
-            debugger
             return {
                 ...state,
-                messages: [state.messages.find((d) => d.id === action.userId), ...state.messages.filter(d=> d.id !== action.userId)]
+                dialogs: [state.dialogs.find((d) => d.id === action.userId), ...state.dialogs.filter(d=> d.id !== action.userId)]
             }
        case SEND_MESSAGE_SUCCESS:
             return {
@@ -62,14 +61,17 @@ export const startDialog = (userId) => async (dispatch, getState) => {
         dispatch(getDialogs())
     }
 };
-export const sendMessage = (userId, message) => async (dispatch) => {
+export const sendMessage = (userId, message) => async (dispatch, getState) => {
     let response = await dialogsApi.sendMessage(userId, message);
     dispatch(sendMessageSuccess(response.data.data.message));
-    dispatch(putUpDialog(userId));
+    if (getState().dialogsPage.dialogs.find(d => d.id === userId)) {
+        dispatch(putUpDialog(userId))
+    } else {
+        dispatch(getDialogs())
+    }
 };
 
 export const init = (userId) => async (dispatch) => {
-    debugger
     if(!!userId){
         await dispatch(startDialog(userId));
         dispatch(getDialogs());
