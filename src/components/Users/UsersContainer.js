@@ -10,6 +10,8 @@ import {
     getSizePage,
     getTotalCountUsers, getUsers
 } from "../../redux/usersSelectors";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -53,8 +55,10 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {
-    follow,
-    unFollow,
-    requestUsers
-})(UsersContainer);
+export default compose(connect(mapStateToProps, {
+        follow,
+        unFollow,
+        requestUsers
+    }),
+    withAuthRedirect)
+(UsersContainer);

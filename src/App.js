@@ -30,13 +30,11 @@ class App extends Component {
                 <div className='appWrapper'>
                     {this.props.isAuth && <HeaderContainer/>}
                     <div className='app_wrapper_profile'>
-                        <Switch>
                         <Route exact path to='/' render={withSuspense(ProfileContainer)}/>
                         <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
                         <Route path='/dialogs/:userId?' render={withSuspense(DialogsContainer)}/>
                         <Route path='/users' render={() => <UsersContainer/>}/>
                         <Route path='/login' render={() => <Login/>}/>
-                        </Switch>
                     </div>
                 </div>
             </>
