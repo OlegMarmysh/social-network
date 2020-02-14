@@ -14,7 +14,12 @@
 .dialog a:hover{
     background-color: #eeeeee;
 }
-.dialog a>div{
+.dialog img{
+    margin-right: 10px;
+    height: 60px;
+    width: 60px;
+}
+.dialog a>div:nth-child(2){
     color: #5c5c5c;
     font-size: 18px;
     font-weight: 500;
@@ -22,6 +27,6 @@
 
 .activeLink {
     opacity: 0.6;
-   background-color: #84acbc;
+   background-color: #98c2d2;
 }
 

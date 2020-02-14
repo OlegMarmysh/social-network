@@ -12,7 +12,9 @@ const Dialogs = (props) => {
         <div className={s.dialogs}>
             <div>
                 <h3>Dialogs</h3>
-                {props.dialogs.map(d => <Dialog key={d.id} dialogId={d.id} userName={d.userName}/>)}
+                {props.dialogs.map(d => <Dialog key={d.id} dialogId={d.id} userName={d.userName} photos={d.photos.small}
+                                                dialogDate={d.lastDialogActivityDate}
+                />)}
             </div>
             <div className={s.messages}>
                 <h3>Messages</h3>
