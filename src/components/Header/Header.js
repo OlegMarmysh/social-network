@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import s from './Header.module.css'
-import { NavLink } from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 import Navbar from './Navbar/NavBar'
 import userPhoto from '../../images/users-vector-icon-png_260862.jpg'
 import Preloader from '../Common/Preloader/Preloader'
@@ -33,7 +33,10 @@ const Header = () => {
           {isAuth
             ? (<div className={s.loginContent}>
               <img src={profile.photos.small || userPhoto} alt="profile Photo"/>
-              <div><span style={{ color: '#fffffe', fontWeight: 'bold', fontSize: '14px' }}>{login}</span><a onClick={onLogout}>Log out</a></div>
+              <div>
+                <span style={{ color: '#fffffe', fontWeight: 'bold', fontSize: '14px' }}>{login}</span>
+                <a onClick={onLogout}>Log out</a>
+              </div>
             </div>
             )
             : <NavLink to={'/login'}>Login</NavLink>}

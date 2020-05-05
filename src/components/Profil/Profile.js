@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import Description from './Description/Description'
-import MyPostContainer from './MyPost/MyPostContainer'
 import s from './Profile.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import { getUserProfile, getUserStatus } from '../../redux/profilePageReducer'
+import MyPost from './MyPost/MyPost'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 
 const Profile = (props) => {
   const dispatch = useDispatch()
@@ -35,10 +36,10 @@ const Profile = (props) => {
         <Description isOwner={!match.params.userId} />
       </div>
       <div className={s.myPostContent}>
-        <MyPostContainer />
+        <MyPost />
       </div>
     </div>
   )
 }
 
-export default Profile
+export default withAuthRedirect(Profile)

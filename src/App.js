@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import './App.css'
 import { HashRouter, Route } from 'react-router-dom'
-import UsersContainer from './components/Users/UsersContainer'
 import Login from './components/Login/Login'
 import { Provider, useDispatch, useSelector } from 'react-redux'
 import { initializeApp } from './redux/appReducer'
@@ -9,6 +8,7 @@ import Preloader from './components/Common/Preloader/Preloader'
 import store from './redux/reduxStore'
 import { withSuspense } from './hoc/withSuspense'
 import Header from './components/Header/Header'
+import Users from './components/Users/Users'
 
 const Dialogs = React.lazy(() => import('./components/Dialogs/Dialogs'))
 const Profile = React.lazy(() => import('./components/Profil/Profile'))
@@ -31,7 +31,7 @@ const App = () => {
           <Route exact path to='/' render={withSuspense(Profile)}/>
           <Route path='/profile/:userId?' render={withSuspense(Profile)}/>
           <Route path='/dialogs/:userId?' render={withSuspense(Dialogs)}/>
-          <Route path='/users' render={() => <UsersContainer/>}/>
+          <Route path='/users' render={() => <Users/>}/>
           <Route path='/login' render={() => <Login/>}/>
         </div>
       </div>
