@@ -7,7 +7,7 @@ import { login, setCaptcha } from '../../redux/authReducer'
 import { Redirect } from 'react-router-dom'
 import styles from '../Common/FormsControl.module.css'
 import styleLogin from './Login.module.css'
-import reload from '../../images/reload.png'
+import reload from '../../images/reload.svg'
 
 const Login = () => {
   const { isAuth, captchaUrl } = useSelector(state => ({
