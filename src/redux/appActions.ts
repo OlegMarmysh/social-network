@@ -1,5 +1,5 @@
-export const INITIALIZED_SUCCESS = 'social-network/app/INITIALIZED_SUCCESS'
-
 export const appActions = {
-  initializedSuccess: () => ({ type: INITIALIZED_SUCCESS } as const)
+  initializedSuccess: () => ({
+    type: 'SN/APP/INITIALIZED_SUCCESS'
+  } as const)
 }

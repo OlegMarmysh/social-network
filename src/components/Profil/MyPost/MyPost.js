@@ -6,7 +6,7 @@ import { Input } from '../../Common/FormsControl'
 import { maxLengthCreator, required } from '../../utilits/validators'
 import Preloader from '../../Common/Preloader/Preloader'
 import { useDispatch, useSelector } from 'react-redux'
-import { addPost } from '../../../redux/profilePageReducer'
+import { profileActions } from '../../../redux/profileActions'
 
 const maxLength20 = maxLengthCreator(20)
 
@@ -21,7 +21,7 @@ const MyPost = React.memo(() => {
     postId={p.id} post={p.post} likeCounts={p.likeCounts}/>)
 
   const onAddPost = (values) => {
-    dispatch(addPost(values.newTextPost))
+    dispatch(profileActions.addPost(values.newTextPost))
   }
   return (
     <div className={s.MyPost}>
