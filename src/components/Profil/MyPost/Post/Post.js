@@ -1,12 +1,12 @@
 import React from 'react'
 import s from './Post.module.css'
 import { useDispatch } from 'react-redux'
-import { deletePost } from '../../../../redux/profilePageReducer'
+import { profileActions } from '../../../../redux/profileActions'
 
 const Post = (props) => {
   const dispatch = useDispatch()
   const onDeletePost = () => {
-    dispatch(deletePost(props.postId))
+    dispatch(profileActions.deletePost(props.postId))
   }
   return (
     <div className={s.post}>
